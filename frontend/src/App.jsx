@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import './App.css'
-
+import DOMPurify from 'dompurify'
 // ── SVG Icon Components ────────────────────────────────────────────────────────
 const IconCamera = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -313,20 +313,16 @@ function App() {
 
         {/* ── RESULT ─────────────────────────────────────────────────────────── */}
         {result && (
-          <div className="result-card">
-            <div className="result-header">
-              <h2>Analysis Result</h2>
-              <div className="result-meta">
-                <span className={`badge ${analysisMode === 'Expert' ? 'badge-purple' : 'badge-green'}`}>{analysisMode}</span>
-                <span className="badge badge-blue">{result.language}</span>
-              </div>
-            </div>
-            <div className="result-body">
-              {String(result.translated_analysis || '').split('\n').map((p, i) =>
-                p.trim() ? <p key={i}>{p}</p> : null
-              )}
-            </div>
-          </div>
+          <div
+          className="result-body"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(String(result.translated_analysis || ''), {
+              ALLOWED_TAGS: ['div','span','p','h3','h4','ul','ol','li','table','thead',
+                            'tbody','tr','td','th','b','strong','small','hr','br'],
+              ALLOWED_ATTR: ['style'],
+    })
+  }}
+/>
         )}
 
       </main>

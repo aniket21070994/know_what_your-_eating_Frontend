@@ -1,0 +1,23 @@
+{
+  "name": "know_what_your-_eating_frontend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/aniket21070994/know_what_your-_eating_Frontend#readme",
+  "bugs": {
+    "url": "https://github.com/aniket21070994/know_what_your-_eating_Frontend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aniket21070994/know_what_your-_eating_Frontend.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dompurify": "^3.4.14"
+  }
+}
